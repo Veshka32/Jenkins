@@ -2,6 +2,7 @@ pipeline {
     agent any
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
+        string(name: 'email', description: 'send notification here')
     }
     environment {
         USER_NAME = credentials('user_name')
@@ -21,6 +22,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+            }
+        }
+    }
+    post {
+        always {
+            if (params.email != null) {
+                mail to: 32inter@gmail.com, subject: 'Job is finished!'
             }
         }
     }
