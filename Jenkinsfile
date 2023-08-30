@@ -29,7 +29,7 @@ pipeline {
         always {
            script {
                 if (params.email != null) {
-                mail to: params.email, subject: 'Job is finished!'
+                mail to: params.email, subject: 'Job is finished!', body: 'Oooops'
             }
            }
         }
