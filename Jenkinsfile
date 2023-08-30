@@ -28,7 +28,7 @@ pipeline {
     post {
         always {
             if (params.email != null) {
-                mail to: 32inter@gmail.com, subject: 'Job is finished!'
+                mail to: params.email, subject: 'Job is finished!'
             }
         }
     }
