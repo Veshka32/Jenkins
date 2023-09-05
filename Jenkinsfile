@@ -22,7 +22,7 @@ pipeline {
             }
         }
         stage('Condition') {
-             when {properties(name: 'trigger', value: true)}
+             when {expression(params.trigger)}
             steps {
                 echo "Triggered"
             }
