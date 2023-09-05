@@ -3,7 +3,7 @@ pipeline {
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
         string(name: 'email', description: 'send notification here')
-        string(name: 'trigger', description: 'Trigger')
+        booleanParam(name: 'trigger', description: 'Trigger')
 
     }
     environment {
@@ -22,7 +22,11 @@ pipeline {
             }
         }
         stage('Condition') {
-             when {expression(return params.trigger)}
+             when {
+                 expression {
+                    return params.trigger
+                }
+             }
             steps {
                 echo "Triggered"
             }
