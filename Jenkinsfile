@@ -3,6 +3,8 @@ pipeline {
     parameters {
         string(name: 'Greeting', defaultValue: 'Hello', description: 'How should I greet the world?')
         string(name: 'email', description: 'send notification here')
+        string(name: 'trigger', description: 'Trigger')
+
     }
     environment {
         USER_NAME = credentials('user_name')
@@ -17,6 +19,12 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
+            }
+        }
+        stage('Condition') {
+             when {trigger}
+            steps {
+                echo "Triggered"
             }
         }
         stage('Deploy') {
