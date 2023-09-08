@@ -27,6 +27,9 @@ pipeline {
                     return params.trigger
                 }
              }
+             options {
+                timeout(time: 5, unit:'SECONDS')
+            }
             steps {
                 input message: 'Proceed?'
                 echo "Triggered"
