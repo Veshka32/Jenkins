@@ -28,7 +28,16 @@ pipeline {
                 }
              }
             steps {
+                input message: 'Proceed?'
                 echo "Triggered"
+            }
+            post{
+                success {
+                    echo "Success"
+                }
+                aborted {
+                    echo "Not success"
+                }
             }
         }
         stage('Deploy') {
