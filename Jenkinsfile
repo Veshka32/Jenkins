@@ -20,12 +20,12 @@ pipeline {
             parallel {
                 stage('First') {
                     steps {
-                        echo "First parallel"
+                        echo "$DEMO"
                     }
                 }
                 stage('Second') {
                     steps {
-                        echo "Second parallel"
+                        echo "$BUILD_NUMBER"
                     }
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
             }
             steps {
                 echo "This is your message: ${MESSAGE}"
-                writeFile file: "Testfile.txt", text: "Build name is $BUILD_NAME"
+                writeFile file: "Testfile.txt", text: "${MESSAGE}"
             }
         }
     }
