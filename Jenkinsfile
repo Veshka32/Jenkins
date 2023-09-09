@@ -41,6 +41,11 @@ pipeline {
             steps {
                 echo "This is your message: ${MESSAGE}"
                 writeFile file: "Testfile.txt", text: "${MESSAGE}"
+                script {
+                    if (Math.random() > 0.5) {
+                        throw new Exception()
+                    }
+                }
             }
         }
     }
@@ -48,6 +53,12 @@ pipeline {
         always {
             echo "I'm always printed"
             archiveArtifacts "Testfile.txt"
+        }
+        success {
+            echo "Everything is OK"
+        }
+        failure {
+            echo "Exception has been thrown"
         }
     }
 }
