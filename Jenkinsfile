@@ -19,10 +19,14 @@ pipeline {
         stage('Stage with parallel stages') {
             parallel {
                 stage('First') {
-
+                    steps {
+                        echo "First parallel"
+                    }
                 }
                 stage('Second') {
-
+                    steps {
+                        echo "Second parallel"
+                    }
                 }
             }
         }
