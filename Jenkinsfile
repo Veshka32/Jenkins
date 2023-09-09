@@ -47,7 +47,7 @@ pipeline {
     post {
         always {
             echo "I'm always printed"
-            archivedArtifacts "Testfile.txt"
+            archiveArtifacts "Testfile.txt"
         }
     }
 }
