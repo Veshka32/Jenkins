@@ -16,9 +16,9 @@ pipeline {
                 echo "Current build URL: ${currentBuild.absoluteUrl}"
             }
         }
-        stage('Test') {
+        stage('Environments') {
             steps {
-                echo 'Testing..'
+                echo 'this is a build number: $BUILD_NUMBER'
             }
         }
         stage('Condition') {
