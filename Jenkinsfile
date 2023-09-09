@@ -29,10 +29,10 @@ pipeline {
             }
             parallel {
                 stage('First') {
-                    echo "I am first parallel"
+                    
                 }
                 stage('Second') {
-                    echo "I am second parallel"
+                    
                 }
             }
         }
