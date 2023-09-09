@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Environments') {
             steps {
-                echo "this is a build number: ${BUILD_NUMBER}"
+                echo "this is a build number: $BUILD_NUMBER"
             }
         }
         stage('Condition') {
