@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    parameters
     environment {
         USER_NAME = credentials('user_name')
         DEMO = "Demo number is 1"
