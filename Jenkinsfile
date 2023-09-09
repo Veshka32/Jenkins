@@ -36,8 +36,6 @@ pipeline {
             }
             steps {
                 echo "This is your message: ${MESSAGE}"
-            }
-            steps {
                 writeFile file: "Testfile.txt", text: "Build name is $BUILD_NAME"
             }
         }
