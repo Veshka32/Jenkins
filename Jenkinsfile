@@ -43,9 +43,16 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Stage with input') {
+            input {
+                message 'What is you message?'
+                ok 'Nice!'
+                parameters {
+                    string(name: 'MESSAGE', defaultValue: "I'm dump'", description: 'Type anything')
+                }
+            }
             steps {
-                echo 'Deploying....'
+                echo "This is your message: ${MESSAGE}"
             }
         }
     }
