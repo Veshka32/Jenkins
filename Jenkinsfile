@@ -16,7 +16,17 @@ pipeline {
                 echo "$STEP_ENV"
             }
         }
-        stage('Stage with input') {
+        stage('Stage with parallel stages') {
+            parallel {
+                stage('First') {
+
+                }
+                stage('Second') {
+
+                }
+            }
+        }
+        stage('Write file') {
             input {
                 message 'What is you message?'
                 ok 'Nice!'
@@ -27,16 +37,6 @@ pipeline {
             steps {
                 echo "This is your message: ${MESSAGE}"
             }
-            parallel {
-                stage('First') {
-                    
-                }
-                stage('Second') {
-                    
-                }
-            }
-        }
-        stage('Write file') {
             steps {
                 writeFile file: "Testfile.txt", text: "Build name is $BUILD_NAME"
             }
