@@ -1,3 +1,4 @@
+@Library("https://github.com/Veshka32/Jenkins.git")
 pipeline {
     agent any
     parameters {
@@ -66,7 +67,7 @@ pipeline {
             archiveArtifacts "Testfile.txt"
         }
         success {
-            printOk()
+            tools()
         }
         failure {
             echo "Exception has been thrown"
@@ -76,8 +77,4 @@ pipeline {
 
 String getParameter() {
     return "I'm a parameter: $DO"
-}
-
-void printOk() {
-    echo "Everything is OK"
 }
