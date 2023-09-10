@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    parameters {
+        booleanParam(name: 'DO', defaultValue: false, description: 'Do action')
+    }
     environment {
         USER_NAME = credentials('user_name')
         DEMO = "Demo number is 1"
@@ -14,6 +17,14 @@ pipeline {
                 echo "User name is a secret: ${USER_NAME}"
                 echo "User name is a secret: ${env.USER_NAME}"
                 echo "$STEP_ENV"
+            }
+        }
+        stage('Parameter') {
+            when {
+                expression {return params.DO}
+            }
+            steps {
+                echo getParameter()
             }
         }
         stage('Stage with parallel stages') {
@@ -55,10 +66,18 @@ pipeline {
             archiveArtifacts "Testfile.txt"
         }
         success {
-            echo "Everything is OK"
+            printOk()
         }
         failure {
             echo "Exception has been thrown"
         }
     }
+}
+
+String getParameter() {
+    return "I'm a parameter: $DO"
+}
+
+void printOk() {
+    echo "Everything is OK"
 }
