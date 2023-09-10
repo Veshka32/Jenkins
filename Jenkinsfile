@@ -1,5 +1,4 @@
-library remote: "https://github.com/Veshka32/Jenkins.git"
-
+library identifier: 'tools@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '', remote: 'https://github.com/Veshka32/Jenkins.git', traits: [gitBranchDiscovery()]])
 pipeline {
     agent any
     parameters {
