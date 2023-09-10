@@ -1,4 +1,5 @@
-@Library("https://github.com/Veshka32/Jenkins.git")
+library remote: "https://github.com/Veshka32/Jenkins.git"
+
 pipeline {
     agent any
     parameters {
